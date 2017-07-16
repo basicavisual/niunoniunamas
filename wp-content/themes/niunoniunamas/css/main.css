@@ -1,0 +1,206 @@
+/*general*/
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans', sans-serif;
+  color: #4d4d4d;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #4d4d4d;
+}
+
+.logo {
+  height: 12em;
+  display: inline-block;
+  vertical-align: baseline;
+  position: absolute;
+  z-index: 1;
+  margin: 2em 0 0 1em;
+}
+
+.header-title {
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: left;
+  font-size: 4em;
+  font-family: 'Lobster Two', cursive;
+  padding: 0 0 0 .1em;
+  color: #d8257a;
+  margin: 1.5em 0 0 2.8em;
+}
+
+.navbar {
+  display: block;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  padding: 1em 0 1em 10em;
+  position: relative;
+}
+
+.navbar a {
+  display: inline;
+  text-decoration: none;
+  font-family: 'Fira Sans', sans-serif;
+  margin-left: 1.6em;
+  padding: .5em;
+  color: #4d4d4d;
+  transition: .5s ease;
+}
+
+.navbar a:hover {
+  color: #fff;
+  background-color: #4d4d4d;
+}
+
+.carrousel {
+  width: 65%;
+  display: block;
+  margin: auto;
+}
+.secondo {
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  width: 100%;
+}
+
+.last-articles {
+  width: 65%;
+  margin: auto;
+}
+.article-pic-sm, .article-title, .article-date {
+  display: inline-block;
+  word-wrap: break-word;
+  text-overflow: clip;
+  clear: both;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 15em;
+  height: auto;
+}
+
+.all {
+    width: 75%;
+    display: block;
+    margin: 2em auto 2em auto;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    padding: 1em 0 3em 0;
+}
+
+article {
+  width: 70%;
+  margin: auto;
+}
+
+.article-title-display {
+  display: block;
+  color: #d8257a;
+  font-size: 2.7em;
+  margin: .4em 0 .4em 0;
+}
+
+.article-pic-display {
+  width: 100%;
+  height: auto;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .carrousel {
+    width: 80%;
+  }
+  .last-articles {
+    width: 80%;
+  }
+  .article-pic-sm {
+    width: 12em;
+    height: auto;
+  }
+  .article-title, .article-date  {
+    font-size: .8em;
+  }
+
+  .all {
+    width: 80%;
+  }
+
+  article {
+    width: 80%;
+  }
+
+  .article-title-display {
+    font-size: 2.3em;
+  }
+
+  .article-pic-display {
+    width:
+  }
+
+}
+
+
+@media only screen and (max-width: 695px) {
+  .logo {
+    height: 8em;
+    margin: .5em 0 .5em .5em;
+    position: relative;
+    vertical-align: middle;
+  }
+  .header-title {
+    font-size: 3.5em;
+    margin: auto;
+    vertical-align: middle;
+  }
+  .navbar {
+    padding: .5em .2em .5em .2em;
+  }
+  .navbar a {
+    padding: 0 .5em 0 0;
+    margin: .6em;
+  }
+}
+
+
+/*Grid layout*/
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* For mobile phones: */
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+        width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
