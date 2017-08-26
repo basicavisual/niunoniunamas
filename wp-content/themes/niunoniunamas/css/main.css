@@ -95,6 +95,7 @@ a:visited {
 
 .article-pic-sm {
   height: 10em;
+  object-fit: cover;
 }
 
 .no-thumb-sm {
@@ -136,6 +137,7 @@ article {
 .article-pic-display {
   width: 100%;
   height: auto;
+  margin-bottom: 2em;
 }
 
 
