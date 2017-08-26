@@ -14,9 +14,6 @@
     <a href="<?php echo get_bloginfo( 'wpurl' );?>"><img src="<?php echo get_bloginfo('template_directory'); ?>/public/logo.png" class="logo" alt="logo"></a>
     <a href="<?php echo get_bloginfo( 'wpurl' );?>"><h1 class="header-title"><?php echo get_bloginfo( 'name' ); ?></h1></a>
     <nav class="navbar">
-        <a href="#">Editoriales</a>
-        <a href="#">Quienes Somos</a>
-        <a href="#">Contacto</a>
-        <a href="#">Feminicidios</a>
+        <?php wp_list_pages( '&title_li=' ); ?>
     </nav>
   </header>
