@@ -15,7 +15,7 @@
            };
      echo '<a href="' . get_permalink($post_id) . '">' . '<p class="article-title">' . get_the_title($post_id) . '</p></a>';
      echo '</div>';
-
+     wp_reset_query();
    }
 
        ?>
