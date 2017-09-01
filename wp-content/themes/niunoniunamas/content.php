@@ -6,8 +6,8 @@
       $post_id = $recent_posts[$i]['ID'];
       echo '<a href="' . get_permalink($post_id) . '"><h2 class="article-title-display">' . get_the_title($post_id) . '</h2></a>';
       echo get_the_post_thumbnail($post_id, 'full', array('class' => 'article-pic-display'));
-      echo get_the_date($post_id) . '</br>';
-      echo get_the_content($post_id);
+      echo '</br>' . get_the_date($post_id) . '</br>';
+      echo '</br>' . get_the_content($post_id);
 
       ?>
 
