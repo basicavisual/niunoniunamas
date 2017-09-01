@@ -1,4 +1,6 @@
-<img src="<?php echo get_bloginfo('template_directory'); ?>/public/carrousel.png" alt="carrousel" class="carrousel">
+<div class="slider-main">
+<?php echo do_shortcode('[slide-anything id="44"]'); ?>
+</div>
 <div class="secondo">
 <div class="last-articles row">
   <?php
