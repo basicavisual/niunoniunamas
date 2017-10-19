@@ -18,3 +18,8 @@ add_action('wp_footer', 'wp_enqueue_scripts', 5);
 
 // add_filter( 'widget_text', 'shortcode_unautop');
 // add_filter( 'widget_text', 'do_shortcode', 11);
+// function js_scripts() {
+// 	wp_enqueue_script('carousel', get_stylesheet_directory_uri() . '/js/carousel.js', array('jquery', 'bootstrap'), false, true);
+// }
+//
+// add_action('wp_enqueue_scripts', 'js_scripts');
