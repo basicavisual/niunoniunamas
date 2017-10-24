@@ -15,9 +15,9 @@ echo do_shortcode('[slide-anything id="44"]');
         $post_id = $recent_posts[$i]['ID'];
     echo '<div class="item" id="slide-' . $i. '"><div class="col-xs-4">';
      if ( has_post_thumbnail($post_id) ) {
-          echo get_the_post_thumbnail( $post_id, 0, array('class' => 'article-pic-sm') );
+          echo '<a href="' . get_permalink($post_id) . '">' . get_the_post_thumbnail( $post_id, 0, array('class' => 'article-pic-sm') ) . '</a>';
      } else {
-          echo '<div class="no-thumb-sm article-pic-sm"><p>Ni uno ni una más</p></div>';
+          echo '<a href="' . get_permalink($post_id) . '">' . '<div class="no-thumb-sm article-pic-sm"><p>Ni uno ni una más</p></div></a>';
           };
     echo '<a href="' . get_permalink($post_id) . '">' . '<p class="article-title">' . get_the_title($post_id) . '</p></a>';
     echo '</div></div>';
