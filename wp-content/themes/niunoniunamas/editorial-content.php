@@ -1,7 +1,7 @@
-<div class="all">
+<div class="article-box">
     <article class="article">
       <?php
-      $args = array( 'numberposts' => 1, 'post_status' => 'publish' );
+      $args = array( 'numberposts' => 1, 'post_status' => 'publish', 'category_name' => 'Editorial' );
       $recent_posts = wp_get_recent_posts( $args );
       $post_id = $recent_posts[$i]['ID'];
       echo '<a href="' . get_permalink($post_id) . '"><h2 class="article-title-display">' . get_the_title($post_id) . '</h2></a>';
