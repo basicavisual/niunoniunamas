@@ -25,7 +25,7 @@ document.getElementById("slide-0").className += " active";
 }());
 
 </script> -->
-
+<footer></footer>
 
 
 <?php wp_footer(); ?>

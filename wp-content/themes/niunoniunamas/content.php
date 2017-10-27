@@ -1,15 +1,18 @@
-<div class="all">
+<div class="article-box">
     <article class="article">
-      <?php
-      $args = array( 'numberposts' => 1, 'post_status' => 'publish' );
-      $recent_posts = wp_get_recent_posts( $args );
-      $post_id = $recent_posts[$i]['ID'];
-      echo '<a href="' . get_permalink($post_id) . '"><h2 class="article-title-display">' . get_the_title($post_id) . '</h2></a>';
-      echo get_the_post_thumbnail($post_id, 'full', array('class' => 'article-pic-display'));
-      echo '</br>' . get_the_date($post_id) . '</br>';
-      echo '</br>' . get_the_content($post_id);
 
-      ?>
+      <div class="article-box-small">
+        <div class="row">
+          <div class="col-3">
+            <a href="#"><img src="<?php the_post_thumbnail( 'medium' );?>" alt="<?php the_title(); ?>" class="article-pic-sm"></a>
+          </div>
+          <div class="col-9">
+            <h3 class="article-title-posts"><?php the_title(); ?></h3>
+            <p><?php the_excerpt(); ?></p>
+            <a href="<?php get_permalink($post_id); ?>" class="read-more">Read more...</a>
+          </div>
+        </div>
+      </div>
 
     </article>
 </div>

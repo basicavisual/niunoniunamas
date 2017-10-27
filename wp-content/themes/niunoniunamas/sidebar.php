@@ -21,15 +21,11 @@ echo do_shortcode('[slide-anything id="44"]');
           };
     echo '<a href="' . get_permalink($post_id) . '">' . '<p class="article-title">' . get_the_title($post_id) . '</p></a>';
     echo '</div></div>';
-    wp_reset_query();
+
 
   }
-
-
-       ?>
-
-         <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-       <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+  wp_reset_query();
+  ?>
         </div>
         <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
         <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
