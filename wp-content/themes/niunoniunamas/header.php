@@ -16,5 +16,9 @@
     <a href="<?php echo get_bloginfo( 'wpurl' );?>"><h1 class="header-title"><?php echo get_bloginfo( 'name' ); ?></h1></a>
     <nav class="navbar">
         <?php wp_list_pages( '&title_li=' ); ?>
+        <div class="hd-search">
+            <?php get_search_form(); ?>
+        </div>
+
     </nav>
   </header>
