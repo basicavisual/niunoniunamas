@@ -9,6 +9,28 @@ html, body {
   padding: 0;
   font-family: 'Fira Sans', sans-serif;
   color: #4d4d4d;
+   overflow:auto;
+}
+
+html {
+  height: 100vh;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+footer {
+  height: 3rem;
+  width: 100%;
+  background-color: #222;
+  position: absolute;
+  bottom: 0;
+}
+
+main {
+  position: relative;
+  margin-bottom: 5rem;
 }
 
 a {
@@ -154,11 +176,9 @@ a:visited {
   display: block;
 }
 
-footer {
-  height: 3em;
-  width: 100%;
-  background-color: #222;
-}
+
+
+
 a {
   text-decoration: none;
   color: #d8257a;

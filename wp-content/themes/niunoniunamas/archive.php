@@ -1,40 +1,53 @@
 <?php get_header(); ?>
+<main>
+  <?php
+    $args = array(
+        'post_type' => 'post'
+    );
 
-    <main>
-      <div class="subtitle-box">
-        <h3 class="subtitle-text">Archivos</h3>
-        <?php // get_search_form(); ?>
+    $post_query = new WP_Query($args);
+    if($post_query->have_posts() ) :
 
-      </div>
+      	?>
+        <div class="subtitle-box">
+          <h3 class="subtitle-text">
+            <?php
 
-        <?php global $post;
-        // $args = array( 'category' => 2 );
-        $myposts = get_posts();
-        foreach ( $myposts as $post ) :
-          setup_postdata( $post ); ?>
+            if ( is_category() ) {
+              single_cat_title();
+            } elseif ( is_tag() ) {
+              single_tag_title();
+            } elseif ( is_author() ) {
+              the_post();
+              echo 'Archivos del autor: ' . get_the_author();
+              rewind_posts();
+            } elseif ( is_day() ) {
+              echo 'Archivos del día: ' . get_the_date();
+            } elseif ( is_month() ) {
+              echo 'Archivos del mes: ' . get_the_date('F Y');
+            } elseif ( is_year() ) {
+              echo 'Archivos del año: ' . get_the_date('Y');
+            } else {
+              echo 'Archivos:';
+            }
 
-<div class="article-box-small">
-      <div class="row">
-        <div class="col-3 archive-box">
-          <?php if ( has_post_thumbnail() ) : ?>
-              <a href="<?php the_permalink(); ?>"><img src="<?php
-              the_post_thumbnail_url();?>" alt="<?php the_title(); ?>" class="article-pic-sm"></a>
-              </a>
-          <?php else: ?>
-            <a href="<?php the_permalink() ?>"><div class="no-thumb-sm article-pic-sm"><p>Ni uno ni una más</p></div></a>
-          <?php endif; ?>
-
+          ?></h3>
         </div>
-        <div class="col-9 archive-box">
-          <h3 class="article-title-posts"><?php the_title(); ?></h3>
-          <p><?php the_excerpt(); ?></p>
-          <p><a href="<?php the_permalink(); ?>" class="read-more">Leer más...</a></p>
-        </div>
-      </div>
-      </div>
-<?php endforeach;
-      wp_reset_postdata();
-?>
+
+
+      	<?php
+      	while ($post_query->have_posts()) : $post_query->the_post();
+
+      	get_template_part('content');
+
+      	endwhile;
+
+      	else :
+      		get_template_part('nullcontent');
+
+      	endif;
+        wp_reset_postdata();
+        ?>
 
 </main>
 

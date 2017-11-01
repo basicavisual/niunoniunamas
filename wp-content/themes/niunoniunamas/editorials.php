@@ -6,37 +6,33 @@
 <?php get_header(); ?>
 
     <main>
-<h3 class="subtitle-text">Editoriales</h3>
-
+      <div class="subtitle-box">
+        <h3 class="subtitle-text">Editoriales:</h3>
+      </div>
+      
 <?php
-global $post;
-$args = array( 'category' => 2 );
-$myposts = get_posts( $args );
-foreach ( $myposts as $post ) :
-  setup_postdata( $post ); ?>
+$argus = array(
+    'post_type' => 'post',
+    'cat' => 2
+);
 
-<div class="article-box-small">
-   <div class="row">
-     <div class="col-3 archive-box">
-       <?php if ( has_post_thumbnail() ) : ?>
-           <a href="<?php the_permalink(); ?>"><img src="<?php
-           the_post_thumbnail_url();?>" alt="<?php the_title(); ?>" class="article-pic-sm"></a>
-           </a>
-       <?php else: ?>
-         <a href="<?php the_permalink() ?>"><div class="no-thumb-sm article-pic-sm"><p>Ni uno ni una más</p></div></a>
-       <?php endif; ?>
+$post_query1 = new WP_Query($argus);
+ if($post_query1->have_posts() ) :
 
-     </div>
-     <div class="col-9 archive-box">
-       <h3 class="article-title-posts"><?php the_title(); ?></h3>
-       <p><?php the_excerpt(); ?></p>
-       <p><a href="<?php the_permalink(); ?>" class="read-more">Leer más...</a></p>
-     </div>
-   </div>
-   </div>
+   while ($post_query1->have_posts()) : $post_query1->the_post();
 
- <?php endforeach;
- wp_reset_postdata(); ?>
+      get_template_part('content');
+
+   endwhile;
+
+   else :
+
+     get_template_part('nullcontent');
+
+   endif;
+  wp_reset_postdata();
+  ?>
+
 </main>
 
 <?php get_footer(); ?>
