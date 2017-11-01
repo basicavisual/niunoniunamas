@@ -137,13 +137,13 @@ a:visited {
 }
 
 .article-box {
-    width: 75%;
+    /*width: 75%;*/
     display: block;
     margin: 2rem auto 2rem auto;
-    border-top: 1px solid #999;
+    /*border-top: 1px solid #999;
     border-right: 1px solid #999;
     border-bottom: 1px solid #999;
-    border-left: 1px solid #999;
+    border-left: 1px solid #999;*/
     padding: 1rem 0 3rem 0;
 }
 
@@ -234,7 +234,7 @@ header {
   display: block;
   color: #d8257a;
   font-size: 2.7em;
-  margin: .4rem 0 .4rem 0;
+  margin: .4rem 0 2rem 0;
 }
 
 .article-pic-display {
