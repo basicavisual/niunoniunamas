@@ -323,22 +323,25 @@ function register_tinymce_button($buttons) {
 	return $buttons;
 }
 function get_tinymce_shortcode_array() {
-	// display 2 javascript arrays (in footer) containing all the slide anything post titles and post ids
-	// these 2 arrays are used to display the shortcode options by the TinyMCE button
-	echo "<script type='text/javascript'>\n";
-	echo "var sa_title_arr = new Array();\n";
-	echo "var sa_id_arr = new Array();\n";
+	$screen = get_current_screen();
+	if ($screen->post_type != 'envira') { // ### BUG FIX - CLASHING WITH ENVIRA GALLERY (VER 2.0.13) ###
+		// display 2 javascript arrays (in footer) containing all the slide anything post titles and post ids
+		// these 2 arrays are used to display the shortcode options by the TinyMCE button
+		echo "<script type='text/javascript'>\n";
+		echo "var sa_title_arr = new Array();\n";
+		echo "var sa_id_arr = new Array();\n";
 
-	$args = array('post_type' => 'sa_slider', 'post_status' => 'publish', 'posts_per_page' => -1);
-	$sa_slider_query = new WP_Query($args);
-	$count = 0;
-	while ($sa_slider_query->have_posts()) : $sa_slider_query->the_post();
-		$title = get_the_title();
-		echo "sa_title_arr[".$count."] = '".$title."';\n";
-		echo "sa_id_arr[".$count."] = '".get_the_ID()."';\n";
-		$count++;
-	endwhile;
-	echo "</script>\n";
+		$args = array('post_type' => 'sa_slider', 'post_status' => 'publish', 'posts_per_page' => -1);
+		$sa_slider_query = new WP_Query($args);
+		$count = 0;
+		while ($sa_slider_query->have_posts()) : $sa_slider_query->the_post();
+			$title = get_the_title();
+			echo "sa_title_arr[".$count."] = '".$title."';\n";
+			echo "sa_id_arr[".$count."] = '".get_the_ID()."';\n";
+			$count++;
+		endwhile;
+		echo "</script>\n";
+	}
 }
 
 
@@ -1415,6 +1418,7 @@ function cpt_slider_style_content($post) {
 	}
 	echo "<div id='slider_style_metabox'>\n";
 	echo "<h4>CSS <span>#id</span> for Slider:</h4>\n";
+	echo "<div style='padding-bottom:10px; color:#909090;'>Must consist of letters (upper/lowercase) or Underscore '_' characters <span style='color:firebrick;'>ONLY!</span></div>\n";
 	echo "<input type='text' id='sa_css_id' name='sa_css_id' value='".esc_attr($css_id)."'/>\n";
 	echo "<div id='css_note_text'>To style slides use CSS selector:</div>";
 	echo "<div id='css_note_value'>#".esc_html($css_id)." .owl-item</div>";
@@ -1623,7 +1627,7 @@ function cpt_slider_save_postdata() {
 	$sa_pro_version = validate_slide_anything_pro_registration();
 
 	// ### VERIFY 1) LOGGED-IN USER IS ADMINISTRATOR AND 2) VALID NONCE TO PREVENT CSRF HACKER ATTACKS ###
-	if (current_user_can('manage_options') &&
+	if (current_user_can('edit_pages') &&
 		 isset($_POST['nonce_save_slider']) && wp_verify_nonce($_POST['nonce_save_slider'], basename(__FILE__))) {
 		$total_slides = intval($_POST['sa_num_slides']);
 		if (($_POST['sa_duplicate_slide'] == '') || ($_POST['sa_duplicate_slide'] == '0')) {
@@ -1950,7 +1954,8 @@ function cpt_slider_save_postdata() {
 		update_post_meta($post->ID, 'sa_transition', sanitize_text_field($_POST['sa_transition']));	// SANATIZE
 
 		// UPDATE SLIDER STYLE
-		update_post_meta($post->ID, 'sa_css_id', sanitize_text_field($_POST['sa_css_id']));											// SANATIZE
+		$post_css_id = str_replace("-", "_", $_POST['sa_css_id']);
+		update_post_meta($post->ID, 'sa_css_id', sanitize_text_field($post_css_id));													// SANATIZE
 		update_post_meta($post->ID, 'sa_background_color', sanitize_text_field($_POST['sa_background_color']));				// SANATIZE
 		update_post_meta($post->ID, 'sa_border_width', abs(intval($_POST['sa_border_width'])));									// SANATIZE
 		update_post_meta($post->ID, 'sa_border_color', sanitize_text_field($_POST['sa_border_color']));							// SANATIZE

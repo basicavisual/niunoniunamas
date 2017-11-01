@@ -30,7 +30,7 @@ function slide_anything_shortcode($atts) {
 		'id' => 0,
 	), $atts));
 	$output = '';
-
+	
 	if ($id == 0) {
 		// SHORTCODE 'id' PARAMETER PROVIDED IS INVALID
 		$output .= "<div id='sa_invalid_postid'>Slide Anything shortcode error: A valid ID has not been provided</div>\n";
@@ -64,7 +64,7 @@ function slide_anything_shortcode($atts) {
 				}
 				// apply 'the_content' filter to slide content to process any shortcodes
 				if ($slide_data['shortcodes'] == 'true') {
-					$slide_data["slide".$i."_content"] = apply_filters('the_content', $metadata["sa_slide".$i."_content"][0]);
+					$slide_data["slide".$i."_content"] = do_shortcode($metadata["sa_slide".$i."_content"][0]);
 				} else {
 					$slide_data["slide".$i."_content"] = $metadata["sa_slide".$i."_content"][0];
 				}
@@ -262,7 +262,7 @@ function slide_anything_shortcode($atts) {
 					}
 				}
 			}
-
+			
 			// GENERATE HTML CODE FOR THE OWL CAROUSEL SLIDER
 			$wrapper_style =  "background:".$slide_data['background_color']."; ";
 			$wrapper_style .=  "border:solid ".$slide_data['border_width']."px ".$slide_data['border_color']."; ";
@@ -416,9 +416,15 @@ function slide_anything_shortcode($atts) {
 
 
 
+			// ### ENQUEUE JQUERY SCRIPT IF IT HAS NOT ALREADY BEEN LOADED ###
+			if (!wp_script_is('jquery', 'done')) {
+				wp_enqueue_script('jquery');
+			}
+
+
+
 			// ### GENERATE JQUERY CODE FOR THE OWL CAROUSEL SLIDER ###
-			// if (wp_script_is('jquery', 'done'))
-			if (1) { // Only generate JQuery code if JQuery has been loaded
+			if (wp_script_is('jquery', 'done')) { // Only generate JQuery code if JQuery has been loaded
 				if (($slide_data['items_width1'] == 1) && ($slide_data['items_width2'] == 1) && ($slide_data['items_width3'] == 1) &&
 					 ($slide_data['items_width4'] == 1) && ($slide_data['items_width5'] == 1) && ($slide_data['items_width6'] == 1)) {
 					$single_item = 1;
@@ -546,8 +552,7 @@ function slide_anything_shortcode($atts) {
 
 
 			// ### GENERATE JQUERY CODE FOR THE MAGNIFIC POPUP ###
-			// if (wp_script_is('jquery', 'done')) { // Only generate JQuery code if JQuery has been loaded
-			if (1) {
+			if (wp_script_is('jquery', 'done')) { // Only generate JQuery code if JQuery has been loaded
 				if (($sa_pro_version) && ($lightbox_count > 0)) {
 					$output .= "<script type='text/javascript'>\n";
 					$output .= "jQuery(document).ready(function() {\n";

@@ -147,6 +147,26 @@ a:visited {
     padding: 1rem 0 3rem 0;
 }
 
+.article-box-ed {
+    width: 75%;
+    display: block;
+    margin: .4rem auto .4rem auto;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    padding: 1rem 0 1rem 0;
+}
+
+div.article-box-ed div.article-box {
+  width: 100%;
+  margin-top: 0px;
+}
+
+div.article-box-ed div.article-box article.article {
+  width: 85%;
+}
+
 .article-box-small {
       width: 75%;
       display: block;

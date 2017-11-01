@@ -4,7 +4,7 @@
 * Plugin URI: https://wordpress.org/plugins/slide-anything/
 * Description: Slide Anything allows you to create a carousel/slider where the content for each slide can be anything you want - images, text, HTML, and even shortcodes. This plugin uses the Owl Carousel jQuery plugin, and lets you create beautiful, touch enabled, responsive carousels and sliders.
 * Author: Simon Edge
-* Version: 2.0.10
+* Version: 2.0.16
 * License: GPLv2 or later
 */
 
@@ -28,7 +28,7 @@ add_action('save_post', 'cpt_slider_save_postdata');
 add_filter('manage_sa_slider_posts_columns', 'cpt_slider_modify_columns');
 add_filter('manage_sa_slider_posts_custom_column', 'cpt_slider_custom_column_content');
 add_action('admin_head', 'add_tinymce_button');
-add_action('admin_footer', 'get_tinymce_shortcode_array');
+add_action('admin_footer', 'get_tinymce_shortcode_array', 9999999);
 
 // SLIDE ANYTHING 2.0 UPGRADE NOTICE
 add_action('admin_notices', 'version_20_upgrade_notice');
