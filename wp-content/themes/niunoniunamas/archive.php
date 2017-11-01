@@ -1,12 +1,7 @@
 <?php get_header(); ?>
 <main>
-  <?php
-    $args = array(
-        'post_type' => 'post'
-    );
-
-    $post_query = new WP_Query($args);
-    if($post_query->have_posts() ) :
+<?php
+      if(have_posts() ) :
 
       	?>
         <div class="subtitle-box">
@@ -14,9 +9,9 @@
             <?php
 
             if ( is_category() ) {
-              single_cat_title();
+              echo 'Archivos de la categoría: ' . single_cat_title('', false);
             } elseif ( is_tag() ) {
-              single_tag_title();
+              echo 'Archivos de la etiqueta: ' . single_tag_title('', false);
             } elseif ( is_author() ) {
               the_post();
               echo 'Archivos del autor: ' . get_the_author();
@@ -36,7 +31,7 @@
 
 
       	<?php
-      	while ($post_query->have_posts()) : $post_query->the_post();
+      	while (have_posts()) : the_post();
 
       	get_template_part('content');
 
@@ -46,7 +41,7 @@
       		get_template_part('nullcontent');
 
       	endif;
-        wp_reset_postdata();
+
         ?>
 
 </main>

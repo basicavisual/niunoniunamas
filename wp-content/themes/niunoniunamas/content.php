@@ -12,6 +12,7 @@
         </div>
         <div class="col-9 archive-box">
           <h3 class="article-title-posts"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+          <?php get_template_part('postinfo'); ?>
           <p><?php the_excerpt(); ?></p>
           <p><a href="<?php the_permalink(); ?>" class="read-more">Leer más...</a></p>
         </div>

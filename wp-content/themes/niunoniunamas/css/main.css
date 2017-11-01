@@ -167,6 +167,17 @@ div.article-box-ed div.article-box article.article {
   width: 85%;
 }
 
+p.post-info {
+	font-size: 87%;
+	color: #999;
+  margin-top: 3px;
+}
+
+p.post-info a:link,
+p.post-info a:visited {
+	color: #999;
+  text-decoration: underline;
+}
 .article-box-small {
       width: 75%;
       display: block;
@@ -254,7 +265,7 @@ header {
   display: block;
   color: #d8257a;
   font-size: 2.7em;
-  margin: .4rem 0 2rem 0;
+  margin: .4rem 0 0 0;
 }
 
 .article-pic-display {
