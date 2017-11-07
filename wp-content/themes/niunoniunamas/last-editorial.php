@@ -7,11 +7,11 @@
 
          while ($post_query1->have_posts()) : $post_query1->the_post();
           ?>
-          <div class="article-box-ed">
+
           <?php
             get_template_part('content', 'single');
           ?>
-          </div>
+          
           <?php
          endwhile;
 
